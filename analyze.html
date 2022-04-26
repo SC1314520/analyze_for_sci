@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://unpkg.com/purecss@2.1.0/build/pure-min.css">
+<meta charset="UTF-8">
+<title>不確定度傳遞程式</title>
+</head>
+<body style="padding: 20px" >
+	<form class="pure-form" method="post" action="/OCE_NEW/analyze_for_sci">
+		<fieldset>
+			<legend>不確定度傳遞程式(小檸檬)</legend>
+			<input type="text" placeholder="請輸入第一真值" name="num1" />
+			+/-
+			<input type="text" placeholder="請輸入第一不確定度" name="err1" /><br/>
+			<p/>
+			<input type="text" placeholder="請輸入第二真值" name="num2" />
+			+/-
+			<input type="text" placeholder="請輸入第二不確定度" name="err2" /><br/>
+			<p/>
+			<input type="text" placeholder="請輸入計算方法（＋,-,*,%,^)" name="method1" /><br/>
+			<p/>
+			<input type="text" placeholder="請輸入次方數（選擇次方傳遞者）" name="s1" /><br/>
+			<p/>
+			<button type="submit" class="pure-button pure-button-primary">
+				計算
+			</button>
+		</fieldset>
+	</form>
+</body>
+</html>

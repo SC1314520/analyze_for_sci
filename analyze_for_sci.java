@@ -14,6 +14,7 @@ public class analyze_for_sci extends HttpServlet{
 	protected void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter out=resp.getWriter();
 		String num1=req.getParameter("num1");
 		String err1=req.getParameter("err1");
 		String num2=req.getParameter("num2");
@@ -21,15 +22,54 @@ public class analyze_for_sci extends HttpServlet{
 		String method1=req.getParameter("method1");
 		String s1=req.getParameter("s1");
 		Double ans1 = null,ans2=null;
+		boolean isNumeric = (num1 == null || num1.length() == 0) ? false : num1.chars().allMatch(Character::isDigit);
+		boolean isNumeric1 = (err1 == null || err1.length() == 0) ? false : err1.chars().allMatch(Character::isDigit);
+		boolean isNumeric2 = (num2 == null || num2.length() == 0) ? false : num2.chars().allMatch(Character::isDigit);
+		boolean isNumeric3 = (err2 == null || err2.length() == 0) ? false : err2.chars().allMatch(Character::isDigit);
+		boolean isNumeric5 = (s1 == null || s1.length() == 0) ? false : s1.chars().allMatch(Character::isDigit);
+		if(!isNumeric) {
+			resp.sendError(500, "真值一不可空白，且只能輸入數字");
+			return;
+		}
+		if(!isNumeric1) {
+			resp.sendError(500, "不確定度一不可空白，且只能輸入數字");
+			return;
+		}
+		
 		if(method1.equals("+")) {
+			if(!isNumeric2) {
+				resp.sendError(500, "真值二不可空白，且只能輸入數字");
+				return;
+			}
+			if(!isNumeric3) {
+				resp.sendError(500, "不確定度一不可空白，且只能輸入數字");
+				return;
+			}
 			 ans1=Double.parseDouble(num1)+Double.parseDouble(num2);
 			 ans2=Math.sqrt((Math.pow(Double.parseDouble(err1), 2)) + (Math.pow(Double.parseDouble(err2), 2)));
+			 
 		}
 		if(method1.equals("-")) {
+			if(!isNumeric2) {
+				resp.sendError(500, "真值二不可空白，且只能輸入數字");
+				return;
+			}
+			if(!isNumeric3) {
+				resp.sendError(500, "不確定度一不可空白，且只能輸入數字");
+				return;
+			}
 			 ans1=Double.parseDouble(num1)+Double.parseDouble(num2);
 			 ans2=Math.sqrt((Math.pow(Double.parseDouble(err1), 2)) + (Math.pow(Double.parseDouble(err2), 2)));
 		}
 		if(method1.equals("*")) {
+			if(!isNumeric2) {
+				resp.sendError(500, "真值二不可空白，且只能輸入數字");
+				return;
+			}
+			if(!isNumeric3) {
+				resp.sendError(500, "不確定度一不可空白，且只能輸入數字");
+				return;
+			}
 			ans1=Double.parseDouble(num1)*Double.parseDouble(num2);
 			double g=(Double.parseDouble(err1)/Double.parseDouble(num1))*(Double.parseDouble(err1)/Double.parseDouble(num1));
 			double h=(Double.parseDouble(err2)/Double.parseDouble(num2))*(Double.parseDouble(err2)/Double.parseDouble(num2));
@@ -37,16 +77,29 @@ public class analyze_for_sci extends HttpServlet{
 			
 		}
 		if(method1.equals("%")) {
+			if(!isNumeric2) {
+				resp.sendError(500, "真值二不可空白，且只能輸入數字");
+				return;
+			}
+			if(!isNumeric3) {
+				resp.sendError(500, "不確定度一不可空白，且只能輸入數字");
+				return;
+			}
 			ans1=Double.parseDouble(num1)/Double.parseDouble(num2);
 			double g=(Double.parseDouble(err1)/Double.parseDouble(num1))*(Double.parseDouble(err1)/Double.parseDouble(num1));
 			double h=(Double.parseDouble(err2)/Double.parseDouble(num2))*(Double.parseDouble(err2)/Double.parseDouble(num2));
 			 ans2= ans1 * Math.sqrt(g + h);
 		}
 		if(method1.equals("^")) {
-			 ans1=Math.pow(Double.parseDouble(num1), Double.parseDouble(s1));
+			if(!isNumeric5) {
+				resp.sendError(500, "次方數不可空白");
+				return;
+			}
+			ans1=Math.pow(Double.parseDouble(num1), Double.parseDouble(s1));
 			 ans2=Math.pow(Double.parseDouble(num1), Double.parseDouble(s1))*(Double.parseDouble(s1)*(Double.parseDouble(err1)/Double.parseDouble(num1)));
+	
 		}
-		PrintWriter out=resp.getWriter();
+		
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<link rel=\"stylesheet\""

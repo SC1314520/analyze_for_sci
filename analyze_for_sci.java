@@ -42,7 +42,7 @@ public class analyze_for_sci extends HttpServlet{
 				return;
 			}
 			if(!isNumeric3) {
-				resp.sendError(500, "不確定度一不可空白，且只能輸入數字");
+				resp.sendError(500, "不確定度二不可空白，且只能輸入數字");
 				return;
 			}
 			 ans1=Double.parseDouble(num1)+Double.parseDouble(num2);
@@ -55,7 +55,7 @@ public class analyze_for_sci extends HttpServlet{
 				return;
 			}
 			if(!isNumeric3) {
-				resp.sendError(500, "不確定度一不可空白，且只能輸入數字");
+				resp.sendError(500, "不確定度二不可空白，且只能輸入數字");
 				return;
 			}
 			 ans1=Double.parseDouble(num1)+Double.parseDouble(num2);
@@ -67,7 +67,7 @@ public class analyze_for_sci extends HttpServlet{
 				return;
 			}
 			if(!isNumeric3) {
-				resp.sendError(500, "不確定度一不可空白，且只能輸入數字");
+				resp.sendError(500, "不確定度二不可空白，且只能輸入數字");
 				return;
 			}
 			ans1=Double.parseDouble(num1)*Double.parseDouble(num2);
@@ -82,7 +82,7 @@ public class analyze_for_sci extends HttpServlet{
 				return;
 			}
 			if(!isNumeric3) {
-				resp.sendError(500, "不確定度一不可空白，且只能輸入數字");
+				resp.sendError(500, "不確定度二不可空白，且只能輸入數字");
 				return;
 			}
 			ans1=Double.parseDouble(num1)/Double.parseDouble(num2);

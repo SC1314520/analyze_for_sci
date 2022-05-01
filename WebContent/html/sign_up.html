@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://unpkg.com/purecss@2.1.0/build/pure-min.css">
+<meta charset="UTF-8">
+<title>註冊系統</title>
+</head>
+<body style="padding: 20px">
+	<form class="pure-form" method="post" action="/OCE_NEW/verify">
+		<fieldset>
+			<legend>註冊基本資料</legend>
+			姓名: <input type="text" placeholder="輸入姓名" name="Name" /><p />
+			信箱: <input type="email" placeholder="輸入電子信箱" name="mail" /><p />
+			年齡: <input type="number" placeholder="輸入年齡" name="Age"  /><p />
+			性別: <input type="radio" name="Sex" value="M" />男
+				 <input type="radio" name="Sex" value="F" />女
+			     <p />
+			生日: <input type="date" name="Birth"/><p />	 
+			職業: <input type="checkbox" name="doing" value="Student" />學生
+				 <input type="checkbox" name="doing" value="teacher" />教職員
+				 <input type="checkbox" name="doing" value="Parents" />家長
+				 <input type="checkbox" name="doing" value="company" />公司行號
+				 <input type="checkbox" name="doing" value="others" />其他
+				 <p />
+			身份證字號：<input type="text" placeholder="輸入身分證字號" name="ID" /><p />
+			備註: <textarea name="empMemo" cols="30" rows="3">其他資料請寫在這裡...</textarea>
+				 <p />
+			<button type="submit" class="pure-button pure-button-primary">
+				傳送
+			</button>
+			<button type="reset" class="pure-button pure-button-primary">
+				重置
+			</button>
+		</fieldset>
+	</form>
+</body>
+</html>

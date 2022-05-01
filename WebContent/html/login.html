@@ -19,5 +19,20 @@
 			</button>
 		</fieldset>
 	</form>
+	<form class="pure-form" method="post" action="/OCE_NEW/verify_num">
+		<fieldset>
+			<legend>驗證碼登入介面</legend>
+			身份證字號：
+			<input type="text" placeholder="user_ID" name="id" /><br/>
+			<p/>
+			驗證碼：
+			<input type="password" placeholder="verify_number" name="verify" /><br/>
+			<p/>
+			<button type="submit" class="pure-button pure-button-primary">
+				登入
+			</button>
+			<input type="button" value="註冊" onclick="location.href='/OCE_NEW/html/sign_up.html'">
+		</fieldset>
+	</form>
 </body>
 </html>
